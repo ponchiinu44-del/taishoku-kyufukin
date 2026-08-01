@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="4つの質問で、退職後に確認できる公的給付の目安をチェックできるシミュレーターです。">
+  <title>国からもらえる給付金額チェック｜退職給付金シミュレーター</title>
+  <link rel="canonical" href="https://ponchiinu44-del.github.io/taishoku-kyufukin/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ponchiinu44-del.github.io/taishoku-kyufukin/">
+  <meta property="og:title" content="国からもらえる給付金額チェック｜退職給付金シミュレーター">
+  <meta property="og:description" content="4つの質問で、退職後に確認できる公的給付の目安をチェックできるシミュレーターです。">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+
+:root {
+  --green-900: #173f38;
+  --green-800: #1e554b;
+  --green-700: #2f7566;
+  --green-100: #dcefe9;
+  --green-050: #f1f8f5;
+  --orange-700: #c84f25;
+  --orange-600: #e76635;
+  --orange-500: #f07a45;
+  --orange-100: #ffe0cf;
+  --orange-050: #fff4eb;
+  --blue-900: #1f3572;
+  --blue-800: #2d4b9a;
+  --blue-700: #4265c0;
+  --yellow: #f6c453;
+  --yellow-soft: #fff0bd;
+  --line-green: #06c755;
+  --ink: #2d302d;
+  --muted: #6d706c;
+  --line: #e5d9cf;
+  --surface: #ffffff;
+  --page: #fff8f2;
+  --font-jp: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
+  --font-display: "Yu Mincho", YuMincho, "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Noto Serif JP", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--page);
+  font-family: var(--font-jp);
+  font-feature-settings: "palt" 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgba(240, 122, 69, 0.55);
+  outline-offset: 3px;
+}
+
+.site-shell {
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--page);
+}
+
+.top-line {
+  height: 7px;
+  background: linear-gradient(90deg, var(--green-800) 0 58%, var(--orange-500) 58% 80%, var(--yellow) 80% 100%);
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 14% 24%, rgba(246, 196, 83, 0.26) 0 86px, transparent 87px),
+    radial-gradient(circle at 91% 66%, rgba(231, 102, 53, 0.1) 0 176px, transparent 177px),
+    linear-gradient(180deg, var(--surface), #fffaf6);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero::before {
+  width: 17px;
+  height: 17px;
+  left: calc(50% - 440px);
+  top: 122px;
+  background: var(--orange-500);
+}
+
+.hero-inner {
+  width: min(860px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 34px 0 34px;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.retirement-bubble {
+  width: min(315px, 76vw);
+  min-height: 101px;
+  margin: 0 auto 27px;
+  padding: 18px 38px 20px;
+  display: grid;
+  place-items: center;
+  border: 3px solid #ee9c8a;
+  border-radius: 49% 51% 46% 54% / 47% 44% 56% 53%;
+  position: relative;
+  color: #d35336;
+  background: rgba(255, 253, 250, 0.94);
+  font-size: clamp(33px, 4.4vw, 42px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  text-shadow: 0 2px 0 rgba(255, 220, 207, 0.8);
+  box-shadow: 0 10px 26px rgba(164, 78, 50, 0.09);
+}
+
+.retirement-bubble::before,
+.retirement-bubble::after {
+  content: "";
+  position: absolute;
+  top: auto;
+  border-style: solid;
+  transform: skewX(-16deg) rotate(5deg);
+}
+
+.retirement-bubble::before {
+  left: 55px;
+  bottom: -23px;
+  border-width: 24px 18px 0 0;
+  border-color: #ee9c8a transparent transparent;
+}
+
+.retirement-bubble::after {
+  left: 59px;
+  bottom: -16px;
+  border-width: 19px 13px 0 0;
+  border-color: #fffdfa transparent transparent;
+}
+
+.hero h1 {
+  margin: 0;
+  color: var(--green-900);
+  font-family: var(--font-jp);
+  font-size: clamp(43px, 6.2vw, 62px);
+  font-weight: 800;
+  line-height: 1.24;
+  letter-spacing: -0.045em;
+}
+
+.hero h1 span {
+  display: block;
+  white-space: nowrap;
+}
+
+.hero h1 span:last-child {
+  color: var(--orange-600);
+}
+
+.hero-copy {
+  max-width: 720px;
+  margin: 16px auto 0;
+  color: var(--muted);
+  font-size: 19px;
+  font-weight: 650;
+  line-height: 1.7;
+}
+
+.hero-copy strong {
+  color: var(--orange-700);
+  font-weight: 800;
+}
+
+.counter-card {
+  width: min(690px, 100%);
+  margin: 20px auto 0;
+  padding: 20px 28px 22px;
+  border: 1px solid var(--orange-100);
+  border-radius: 22px;
+  position: relative;
+  background: linear-gradient(145deg, #ffffff, var(--orange-050));
+  box-shadow: 0 18px 45px rgba(126, 67, 37, 0.13);
+}
+
+.counter-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.counter-heading p {
+  margin: 0;
+  color: var(--green-900);
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.slot-row {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.slot-digit {
+  width: 104px;
+  height: 118px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid #183f38;
+  border-radius: 11px;
+  position: relative;
+  color: var(--surface);
+  background: linear-gradient(180deg, #275f55 0 49%, #1e5148 50% 100%);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 87px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  letter-spacing: 0;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.16), 0 5px 12px rgba(23,63,56,0.16);
+}
+
+.slot-digit::after {
+  content: "";
+  position: absolute;
+  inset: 50% 0 auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid rgba(12, 42, 36, 0.32);
+}
+
+.slot-unit {
+  margin-left: 3px;
+  color: var(--orange-700);
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.screen-reader-result {
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.simulator-section {
+  padding: 30px 20px 44px;
+  position: relative;
+  background:
+    linear-gradient(90deg, transparent 49.9%, rgba(231, 102, 53, 0.04) 50%, transparent 50.1%) 0 0 / 42px 42px,
+    linear-gradient(135deg, var(--orange-050), var(--green-050));
+}
+
+.simulator-card {
+  width: min(760px, 100%);
+  min-height: 560px;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid #eadbd0;
+  border-radius: 24px;
+  background: var(--surface);
+  box-shadow: 0 20px 60px rgba(100, 62, 41, 0.11);
+}
+
+.simulator-header {
+  min-height: 132px;
+  padding: 29px 38px 27px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background:
+    radial-gradient(circle at 82% 20%, rgba(255, 244, 194, 0.54) 0 90px, transparent 91px),
+    linear-gradient(135deg, #f3a78f, #f8c2b1);
+}
+
+.simulator-header p {
+  margin: 0 0 9px;
+  color: #7b4137;
+  font-size: 14px;
+  font-weight: 750;
+  letter-spacing: 0.05em;
+}
+
+.simulator-header h2 {
+  margin: 0;
+  color: #542923;
+  font-size: 29px;
+  font-weight: 750;
+  line-height: 1.4;
+}
+
+.simulator-header h2 span {
+  display: inline;
+}
+
+.progress-label {
+  min-width: 92px;
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  color: rgba(84, 41, 35, 0.64);
+  font-family: Arial, sans-serif;
+}
+
+.progress-label strong {
+  color: #9e3f2e;
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.progress-label span {
+  margin-left: 5px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.progress-track {
+  height: 6px;
+  background: #f8ded5;
+}
+
+.progress-track span {
+  height: 100%;
+  display: block;
+  border-radius: 0 99px 99px 0;
+  background: linear-gradient(90deg, var(--orange-500), var(--yellow));
+  transition: width 0.28s ease;
+}
+
+.question-view,
+.result-view {
+  padding: 35px 50px 42px;
+  animation: fade-in 0.22s ease both;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.question-number,
+.result-label {
+  margin: 0;
+  color: var(--orange-600);
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.question-view h3 {
+  margin: 8px 0 28px;
+  color: var(--green-900);
+  font-size: clamp(23px, 4vw, 29px);
+  font-weight: 750;
+  line-height: 1.45;
+  letter-spacing: -0.025em;
+}
+
+.answer-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.answer-list button {
+  min-height: 76px;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  border: 1px solid #cbdad6;
+  border-radius: 12px;
+  color: var(--ink);
+  background: var(--surface);
+  cursor: pointer;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(126, 67, 37, 0.05);
+  transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
+}
+
+.answer-list button:hover {
+  border-color: var(--orange-500);
+  background: var(--orange-050);
+  transform: translateY(-1px);
+}
+
+.answer-list button:active {
+  transform: translateY(0);
+}
+
+.answer-list strong {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.answer-radio {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  border: 2px solid #d7a88e;
+  border-radius: 50%;
+  background: var(--surface);
+}
+
+.answer-arrow {
+  color: var(--orange-600);
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.back-button {
+  margin: 28px auto 0;
+  padding: 5px 2px;
+  display: block;
+  border: 0;
+  border-bottom: 1px solid #a8b8b4;
+  color: var(--muted);
+  background: transparent;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.result-view {
+  padding: 29px 30px 42px;
+  text-align: center;
+}
+
+.result-gate {
+  padding: 37px 34px 33px;
+  overflow: hidden;
+  position: relative;
+  isolation: isolate;
+  border: 1px solid #ffc16c;
+  border-radius: 26px;
+  color: var(--blue-900);
+  background:
+    radial-gradient(circle at 91% 8%, rgba(255, 255, 255, 0.52) 0 105px, transparent 106px),
+    radial-gradient(circle at 8% 88%, rgba(246, 196, 83, 0.18) 0 76px, transparent 77px),
+    linear-gradient(145deg, #fffaf0, #fff0d7 56%, #ffe3bd);
+  box-shadow:
+    0 24px 48px rgba(118, 76, 24, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.result-gate::before {
+  content: "";
+  height: 5px;
+  position: absolute;
+  z-index: 2;
+  inset: 0 0 auto;
+  background: linear-gradient(90deg, var(--orange-500), var(--yellow) 52%, #fff0bd);
+}
+
+.result-gate::after {
+  content: "";
+  width: 190px;
+  height: 190px;
+  position: absolute;
+  z-index: -1;
+  right: -95px;
+  top: -96px;
+  border: 1px solid rgba(45, 75, 154, 0.12);
+  border-radius: 50%;
+  box-shadow: 0 0 0 22px rgba(66, 101, 192, 0.025), 0 0 0 50px rgba(246, 196, 83, 0.045);
+}
+
+.result-gate-header {
+  position: relative;
+  z-index: 1;
+}
+
+.result-gate h3 {
+  margin: 0;
+  color: var(--blue-900);
+  font-family: var(--font-display);
+  font-size: clamp(31px, 5vw, 42px);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0.005em;
+}
+
+.result-gate h3 span,
+.result-gate h3 em {
+  display: block;
+}
+
+.result-gate h3 em {
+  margin-top: 2px;
+  color: #b27a18;
+  background: linear-gradient(180deg, #8b5c0b 0%, #d8a834 43%, #9a6408 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.08em;
+  font-style: normal;
+  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.7));
+}
+
+.result-slot {
+  width: min(560px, 100%);
+  min-height: 142px;
+  margin: 25px auto 22px;
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 17px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(241, 196, 91, 0.7);
+  border-radius: 20px;
+  color: #f7d77b;
+  background:
+    radial-gradient(circle at 14% 17%, rgba(255, 187, 62, 0.22) 0 2px, transparent 14px),
+    radial-gradient(circle at 81% 24%, rgba(255, 213, 106, 0.17) 0 3px, transparent 22px),
+    radial-gradient(circle at 28% 110%, rgba(185, 111, 25, 0.3), transparent 42%),
+    linear-gradient(145deg, #261a10, #0f0c09 63%, #211408);
+  box-shadow:
+    0 17px 30px rgba(54, 31, 10, 0.29),
+    inset 0 1px 0 rgba(255, 226, 151, 0.14),
+    inset 0 0 34px rgba(218, 150, 38, 0.08);
+}
+
+.result-slot::before,
+.result-slot::after {
+  content: "";
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  top: calc(50% - 13px);
+  border-radius: 50%;
+  background: #ffedcf;
+}
+
+.result-slot::before { left: -14px; }
+.result-slot::after { right: -14px; }
+
+.result-slot-number {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.result-slot-group {
+  display: flex;
+  gap: 5px;
+}
+
+.result-slot-group i {
+  width: 60px;
+  height: 82px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(236, 191, 82, 0.28);
+  border-radius: 10px;
+  color: #f8d878;
+  background: linear-gradient(180deg, #3a2a1a 0 49%, #21170f 50% 100%);
+  font-family: var(--font-display);
+  font-size: 59px;
+  font-style: normal;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  text-shadow: 0 1px 0 #fff1b5, 0 3px 10px rgba(255, 184, 44, 0.22);
+  box-shadow: inset 0 1px 0 rgba(255, 235, 176, 0.1), 0 7px 15px rgba(0, 0, 0, 0.34);
+}
+
+.result-slot-group--rolling i {
+  color: #e9b84d;
+  animation: result-digit-roll 0.11s linear both;
+}
+
+.result-slot-group--fixed i {
+  color: #ffe797;
+  background: linear-gradient(180deg, #2c2116 0 49%, #17110c 50% 100%);
+}
+
+.result-slot-number > b {
+  margin: 0 -2px -15px;
+  color: #f0bd4e;
+  font-family: var(--font-display);
+  font-size: 42px;
+  line-height: 1;
+}
+
+.result-slot-unit {
+  color: #f5d476;
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+@keyframes result-digit-roll {
+  from { opacity: 0.35; transform: translateY(-22%); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.line-cta {
+  width: 100%;
+  min-height: 112px;
+  margin: 0 auto;
+  padding: 0 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 3px solid rgba(255, 255, 255, 0.92);
+  border-radius: 18px;
+  position: relative;
+  isolation: isolate;
+  color: #ffffff;
+  background:
+    repeating-linear-gradient(112deg, rgba(255, 255, 255, 0.035) 0 2px, transparent 2px 9px),
+    radial-gradient(circle at 50% -70%, rgba(144, 255, 178, 0.65), transparent 58%),
+    linear-gradient(180deg, #0ad862, var(--line-green) 54%, #03b84c);
+  box-shadow:
+    0 0 0 7px rgba(6, 199, 85, 0.1),
+    0 15px 34px rgba(6, 199, 85, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  text-decoration: none;
+  animation: line-cta-pulse 2.2s ease-in-out infinite;
+  transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.line-cta::before {
+  content: "";
+  width: 36%;
+  height: 220%;
+  position: absolute;
+  z-index: -1;
+  top: -60%;
+  left: -55%;
+  transform: rotate(18deg);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.66), transparent);
+  animation: line-cta-shine 2.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.line-cta > strong {
+  display: block;
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-jp);
+  font-weight: 900;
+  line-height: 1.18;
+  text-align: center;
+}
+
+.line-mark {
+  width: 58px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  position: absolute;
+  z-index: 2;
+  left: 20px;
+  top: calc(50% - 27px);
+  border-radius: 50%;
+  color: var(--line-green);
+  background: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: -0.08em;
+  line-height: 1;
+  box-shadow: 0 4px 0 rgba(0, 109, 45, 0.48), 0 8px 13px rgba(0, 95, 38, 0.24);
+}
+
+.line-mark::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  left: 8px;
+  bottom: -4px;
+  background: #ffffff;
+  clip-path: polygon(0 0, 100% 0, 24% 100%);
+  transform: rotate(10deg);
+}
+
+.line-mark span {
+  transform: translateY(1px);
+}
+
+.line-cta-main {
+  color: #ffffff;
+  font-size: clamp(34px, 5vw, 40px);
+  letter-spacing: -0.035em;
+  text-shadow:
+    0 3px 0 rgba(0, 103, 40, 0.78),
+    0 7px 16px rgba(0, 67, 26, 0.42);
+  white-space: nowrap;
+}
+
+.line-cta-main em {
+  color: #fff600;
+  font-style: normal;
+  text-shadow:
+    0 3px 0 rgba(107, 104, 0, 0.72),
+    0 6px 13px rgba(0, 74, 29, 0.4),
+    0 0 14px rgba(255, 246, 0, 0.64);
+}
+
+.line-cta-arrow {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  position: absolute;
+  z-index: 1;
+  right: 21px;
+  top: calc(50% - 27px);
+  border-radius: 50%;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.16);
+  font-family: Arial, sans-serif;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.line-cta:hover {
+  background:
+    repeating-linear-gradient(112deg, rgba(255, 255, 255, 0.045) 0 2px, transparent 2px 9px),
+    radial-gradient(circle at 50% -70%, rgba(144, 255, 178, 0.72), transparent 58%),
+    linear-gradient(180deg, #08ce5c, #05bc50 54%, #039d42);
+  box-shadow:
+    0 0 0 9px rgba(6, 199, 85, 0.13),
+    0 19px 39px rgba(6, 199, 85, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px) scale(1.012);
+}
+
+.line-cta:active {
+  transform: translateY(0);
+}
+
+@keyframes line-cta-shine {
+  0%, 28% { left: -55%; }
+  68%, 100% { left: 125%; }
+}
+
+@keyframes line-cta-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 7px rgba(6, 199, 85, 0.08),
+      0 15px 34px rgba(6, 199, 85, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 0 0 11px rgba(6, 199, 85, 0.13),
+      0 19px 40px rgba(6, 199, 85, 0.42),
+      inset 0 1px 0 rgba(255, 255, 255, 0.34);
+  }
+}
+
+.answer-review {
+  margin-top: 22px;
+  padding: 24px 26px 20px;
+  border: 1px solid #ead9d3;
+  border-radius: 16px;
+  background: #fffdfb;
+  text-align: left;
+}
+
+.answer-review-heading {
+  margin-bottom: 13px;
+}
+
+.answer-review-heading h4 {
+  margin: 0;
+  color: var(--blue-900);
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.answer-review-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-top: 1px solid #eee2dd;
+}
+
+.answer-review-item {
+  min-height: 61px;
+  padding: 11px 12px;
+  display: grid;
+  grid-template-columns: 138px minmax(0, 1fr);
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid #eee2dd;
+}
+
+.answer-review-item small {
+  color: #8a7478;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.answer-review-item strong {
+  color: var(--blue-900);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.5;
+  text-align: right;
+}
+
+.restart-button {
+  width: min(340px, 100%);
+  min-height: 57px;
+  margin: 19px auto 0;
+  border: 1px solid var(--orange-500);
+  border-radius: 12px;
+  color: var(--orange-700);
+  background: var(--surface);
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 750;
+  box-shadow: 0 6px 14px rgba(126, 67, 37, 0.1);
+}
+
+.restart-button:hover {
+  color: #ffffff;
+  background: var(--orange-600);
+}
+
+.result-note {
+  max-width: 590px;
+  margin: 18px auto 0;
+  color: #75827f;
+  font-size: 10px;
+  line-height: 1.75;
+  text-align: left;
+}
+
+.site-footer {
+  min-height: 126px;
+  padding: 26px max(24px, calc((100vw - 860px) / 2));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  color: var(--surface);
+  background: var(--green-900);
+}
+
+.site-footer-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 30px;
+}
+
+.site-footer-links a {
+  color: #f4fbf8;
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.6;
+  text-underline-offset: 4px;
+}
+
+.site-footer-links a:hover {
+  color: var(--yellow-soft);
+}
+
+.site-footer-meta {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(220, 239, 233, 0.18);
+}
+
+.site-footer strong {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.site-footer small {
+  color: #9cc1b8;
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+}
+
+@media (max-width: 720px) {
+  .top-line { height: 5px; }
+
+  .hero-inner {
+    width: min(100% - 28px, 620px);
+    padding: 20px 0 23px;
+  }
+
+  .retirement-bubble {
+    width: min(250px, 78vw);
+    min-height: 82px;
+    margin-bottom: 23px;
+    padding: 15px 28px 16px;
+    border-width: 2px;
+    font-size: clamp(27px, 7.8vw, 32px);
+  }
+
+  .retirement-bubble::before {
+    left: 43px;
+    bottom: -19px;
+    border-width: 20px 15px 0 0;
+  }
+
+  .retirement-bubble::after {
+    left: 46px;
+    bottom: -13px;
+    border-width: 16px 11px 0 0;
+  }
+
+  .hero h1 {
+    font-size: clamp(29px, 8vw, 37px);
+    line-height: 1.32;
+    letter-spacing: -0.05em;
+  }
+
+  .hero h1 span {
+    margin: 0;
+  }
+
+  .hero-copy {
+    max-width: 340px;
+    margin-top: 13px;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .counter-card {
+    margin-top: 15px;
+    padding: 16px 10px 18px;
+    border-radius: 17px;
+  }
+
+  .counter-heading p {
+    font-size: 18px;
+  }
+
+  .slot-row {
+    margin-top: 12px;
+    gap: 5px;
+  }
+
+  .slot-digit {
+    width: clamp(58px, 19.2vw, 78px);
+    height: clamp(74px, 23vw, 91px);
+    border-radius: 8px;
+    font-size: clamp(53px, 16.5vw, 67px);
+  }
+
+  .slot-unit {
+    margin-left: 0;
+    font-size: 25px;
+  }
+
+  .simulator-section {
+    padding: 16px 14px 30px;
+  }
+
+  .simulator-card {
+    min-height: 520px;
+    border-radius: 18px;
+  }
+
+  .simulator-header {
+    min-height: 110px;
+    padding: 23px 22px 21px;
+  }
+
+  .simulator-header p {
+    margin-bottom: 7px;
+    font-size: 11px;
+  }
+
+  .simulator-header h2 {
+    font-size: 20px;
+  }
+
+  .simulator-header h2 span {
+    display: block;
+  }
+
+  .progress-label {
+    min-width: 64px;
+  }
+
+  .progress-label strong {
+    font-size: 39px;
+  }
+
+  .progress-label span {
+    font-size: 14px;
+  }
+
+  .question-view,
+  .result-view {
+    padding: 25px 18px 31px;
+  }
+
+  .question-number,
+  .result-label {
+    font-size: 9px;
+  }
+
+  .question-view h3 {
+    margin: 7px 0 22px;
+    font-size: 21px;
+  }
+
+  .answer-list {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .answer-list button {
+    min-height: 62px;
+    padding: 0 15px;
+    gap: 11px;
+  }
+
+  .answer-list strong {
+    font-size: 14px;
+  }
+
+  .answer-radio {
+    width: 18px;
+    height: 18px;
+    flex-basis: 18px;
+  }
+
+  .result-gate {
+    padding: 29px 14px 25px;
+    border-radius: 20px;
+  }
+
+  .result-gate h3 {
+    margin: 0;
+    font-size: clamp(25px, 7.4vw, 29px);
+    line-height: 1.4;
+  }
+
+  .result-slot {
+    min-height: 116px;
+    margin: 21px auto 19px;
+    padding: 15px 8px;
+    gap: 7px;
+    border-radius: 14px;
+  }
+
+  .result-slot-number {
+    gap: 4px;
+  }
+
+  .result-slot-group {
+    gap: 3px;
+  }
+
+  .result-slot-group i {
+    width: clamp(27px, 8vw, 31px);
+    height: 63px;
+    border-radius: 7px;
+    font-size: clamp(44px, 12vw, 49px);
+  }
+
+  .result-slot-number > b {
+    margin-bottom: -10px;
+    font-size: 29px;
+  }
+
+  .result-slot-unit {
+    font-size: 18px;
+  }
+
+  .line-cta {
+    min-height: 112px;
+    padding: 0 54px 0 61px;
+    border-width: 2px;
+    border-radius: 15px;
+  }
+
+  .line-cta-main {
+    max-width: 210px;
+    font-size: clamp(24px, 7.3vw, 29px);
+    letter-spacing: -0.045em;
+    white-space: normal;
+  }
+
+  .line-mark {
+    width: 43px;
+    height: 36px;
+    left: 10px;
+    top: calc(50% - 21px);
+    font-size: 10px;
+    box-shadow: 0 3px 0 rgba(0, 109, 45, 0.48), 0 6px 10px rgba(0, 95, 38, 0.22);
+  }
+
+  .line-mark::after {
+    width: 9px;
+    height: 9px;
+    left: 6px;
+    bottom: -3px;
+  }
+
+  .line-cta-arrow {
+    width: 42px;
+    height: 42px;
+    right: 11px;
+    top: calc(50% - 21px);
+    font-size: 23px;
+  }
+
+  .answer-review {
+    padding: 19px 14px 15px;
+  }
+
+  .answer-review-item {
+    min-height: 58px;
+    padding-inline: 8px;
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .answer-review-item small {
+    font-size: 10px;
+  }
+
+  .answer-review-item strong {
+    font-size: 13px;
+  }
+
+  .site-footer {
+    min-height: 138px;
+    padding: 25px 22px;
+    gap: 16px;
+  }
+
+  .site-footer-links {
+    gap: 8px 18px;
+  }
+
+  .site-footer-links a {
+    font-size: 11px;
+  }
+
+  .site-footer-meta {
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+  .line-cta[aria-disabled="true"] { cursor: default; }
+  </style>
+</head>
+<body>
+  <main class="site-shell">
+    <div class="top-line" aria-hidden="true"></div>
+
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-inner">
+        <p class="retirement-bubble">退職時に</p>
+        <h1 id="page-title">
+          <span>国からもらえる給付金、</span>
+          <span>あなたはいくら？</span>
+        </h1>
+        <p class="hero-copy">
+          <strong>4つの質問</strong>に答えるだけ。受給額の目安を<strong>約30秒</strong>でチェックできます。
+        </p>
+
+        <div class="counter-card">
+          <div class="counter-heading"><p>あなたはいくら受け取れる？</p></div>
+          <div class="slot-row" aria-hidden="true">
+            <span class="slot-digit" data-rolling-digit="0">3</span>
+            <span class="slot-digit" data-rolling-digit="1">5</span>
+            <span class="slot-digit" data-rolling-digit="2">2</span>
+            <span class="slot-unit">万円</span>
+          </div>
+          <p class="screen-reader-result" id="screen-reader-result" aria-live="polite">
+            質問への回答後に給付金の確認方法をご案内します
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="simulator-section" aria-labelledby="simulator-title">
+      <div class="simulator-card">
+        <header class="simulator-header">
+          <div>
+            <p>かんたん給付金チェック</p>
+            <h2 id="simulator-title"><span>あなたの状況を</span><span>教えてください</span></h2>
+          </div>
+          <div class="progress-label">
+            <strong id="progress-current">1</strong>
+            <span>/ 4</span>
+          </div>
+        </header>
+        <div class="progress-track" aria-hidden="true"><span id="progress-bar" style="width:25%"></span></div>
+        <div id="simulator-body"></div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <nav class="site-footer-links" aria-label="法的情報">
+        <a href="./tokushoho.html">特定商取引法に基づく表記</a>
+        <a href="./privacy.html">プライバシーポリシー</a>
+      </nav>
+      <div class="site-footer-meta">
+        <strong>退職給付金シミュレーター</strong>
+        <small>© <span id="copyright-year"></span> HUG, LLC. All Rights Reserved.</small>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    /*
+     * ★ LINEリンクの設定箇所
+     * 下の "" の中に、使用するLINEのURLを貼り付けてください。
+     * 例: const LINE_URL = "https://line.me/...";
+     */
+    const LINE_URL = "https://s.lmes.jp/landing-qr/2005306410-aAxJvB6X?uLand=CX8YOa";
+
+    const questions = [
+      { label: "年齢", title: "年齢を教えてください", options: ["29歳以下", "30代", "40代", "50歳以上"] },
+      { label: "雇用形態", title: "雇用形態を教えてください", options: ["正社員", "契約社員", "派遣社員", "その他"] },
+      {
+        label: "保険の加入状況",
+        title: "社会保険か雇用保険に加入していますか？",
+        options: ["社会保険に加入している", "雇用保険に加入している", "両方に加入している"]
+      },
+      { label: "月間給与", title: "月間の給与額を教えてください", options: ["14万円以下", "15〜30万円", "30〜40万円", "40万円以上"] }
+    ];
+
+    let answers = [];
+    let completed = false;
+    let rollingDigits = [3, 5, 2];
+
+    const simulatorBody = document.getElementById("simulator-body");
+    const progressCurrent = document.getElementById("progress-current");
+    const progressBar = document.getElementById("progress-bar");
+    const screenReaderResult = document.getElementById("screen-reader-result");
+
+    function escapeHtml(value) {
+      return value.replace(/[&<>"']/g, function (character) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[character];
+      });
+    }
+
+    function updateRollingDigits() {
+      rollingDigits = [
+        Math.floor(Math.random() * 9) + 1,
+        Math.floor(Math.random() * 10),
+        Math.floor(Math.random() * 10)
+      ];
+      document.querySelectorAll("[data-rolling-digit]").forEach(function (element) {
+        const index = Number(element.getAttribute("data-rolling-digit"));
+        element.textContent = String(rollingDigits[index]);
+      });
+    }
+
+    function renderQuestion() {
+      const questionIndex = answers.length;
+      const question = questions[questionIndex];
+      simulatorBody.className = "question-view";
+      simulatorBody.innerHTML = `
+        <p class="question-number">QUESTION ${String(questionIndex + 1).padStart(2, "0")}</p>
+        <h3>${escapeHtml(question.title)}</h3>
+        <div class="answer-list">
+          ${question.options.map(function (option, optionIndex) {
+            return `
+              <button type="button" data-answer="${optionIndex}">
+                <span class="answer-radio" aria-hidden="true"></span>
+                <strong>${escapeHtml(option)}</strong>
+                <span class="answer-arrow" aria-hidden="true">→</span>
+              </button>
+            `;
+          }).join("")}
+        </div>
+        ${answers.length > 0 ? '<button type="button" class="back-button" id="back-button">ひとつ前の質問に戻る</button>' : ""}
+      `;
+
+      simulatorBody.querySelectorAll("[data-answer]").forEach(function (button) {
+        button.addEventListener("click", function () {
+          answers.push(Number(button.getAttribute("data-answer")));
+          if (answers.length === questions.length) completed = true;
+          render();
+        });
+      });
+
+      const backButton = document.getElementById("back-button");
+      if (backButton) backButton.addEventListener("click", goBack);
+    }
+
+    function renderResult() {
+      simulatorBody.className = "result-view";
+      simulatorBody.innerHTML = `
+        <section class="result-gate" aria-labelledby="result-title">
+          <header class="result-gate-header">
+            <h3 id="result-title"><span>あなた専用の</span><em>給付金額がわかりました</em></h3>
+          </header>
+
+          <div class="result-slot" aria-label="上3桁は演出として回転中です。実際の給付金額はLINEで確認できます">
+            <span class="result-slot-number" aria-hidden="true">
+              <span class="result-slot-group result-slot-group--rolling">
+                <i data-rolling-digit="0">${rollingDigits[0]}</i>
+                <i data-rolling-digit="1">${rollingDigits[1]}</i>
+                <i data-rolling-digit="2">${rollingDigits[2]}</i>
+              </span>
+              <b>,</b>
+              <span class="result-slot-group result-slot-group--fixed"><i>0</i><i>0</i><i>0</i></span>
+            </span>
+            <span class="result-slot-unit" aria-hidden="true">円</span>
+          </div>
+
+          <a class="line-cta" id="line-cta" aria-disabled="true">
+            <span class="line-mark" aria-hidden="true"><span>LINE</span></span>
+            <strong class="line-cta-main">今すぐ<em>給付金額</em>を確認する</strong>
+            <span class="line-cta-arrow" aria-hidden="true">→</span>
+          </a>
+        </section>
+
+        <div class="answer-review" aria-label="あなたの回答内容">
+          <div class="answer-review-heading"><h4>あなたの回答</h4></div>
+          <div class="answer-review-grid">
+            ${answers.map(function (answer, index) {
+              return `
+                <div class="answer-review-item">
+                  <small>${escapeHtml(questions[index].label)}</small>
+                  <strong>${escapeHtml(questions[index].options[answer])}</strong>
+                </div>
+              `;
+            }).join("")}
+          </div>
+        </div>
+
+        <button type="button" class="restart-button" id="restart-button">もう一度チェックする</button>
+        <button type="button" class="back-button" id="result-back-button">ひとつ前の質問に戻る</button>
+        <p class="result-note">※雇用保険は一般的な90日給付、給与帯は代表値による概算です。傷病手当金は、病気やけがで働けないなどの要件を満たす場合に限られます。表示金額は同時に受給できる金額を示すものではありません。</p>
+      `;
+
+      const lineCta = document.getElementById("line-cta");
+      if (LINE_URL.trim()) {
+        lineCta.href = LINE_URL.trim();
+        lineCta.target = "_blank";
+        lineCta.rel = "noopener noreferrer";
+        lineCta.removeAttribute("aria-disabled");
+      } else {
+        lineCta.addEventListener("click", function (event) { event.preventDefault(); });
+      }
+
+      document.getElementById("restart-button").addEventListener("click", function () {
+        answers = [];
+        completed = false;
+        render();
+      });
+      document.getElementById("result-back-button").addEventListener("click", goBack);
+    }
+
+    function goBack() {
+      if (completed) completed = false;
+      answers = answers.slice(0, -1);
+      render();
+    }
+
+    function render() {
+      const currentStep = completed ? 4 : answers.length + 1;
+      progressCurrent.textContent = String(currentStep);
+      progressBar.style.width = (completed ? 100 : (currentStep / questions.length) * 100) + "%";
+      screenReaderResult.textContent = completed
+        ? "入力が完了しました。LINEリンク設定後、登録ボタンから確認できます"
+        : "質問への回答後に給付金の確認方法をご案内します";
+
+      if (completed) renderResult();
+      else renderQuestion();
+    }
+
+    document.getElementById("copyright-year").textContent = String(new Date().getFullYear());
+    render();
+    window.setInterval(updateRollingDigits, 110);
+  </script>
+</body>
+</html>
