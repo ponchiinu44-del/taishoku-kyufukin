@@ -116,6 +116,20 @@ a:focus-visible {
   text-align: center;
 }
 
+.ad-label {
+  display: inline-block;
+  margin: 0 auto 20px;
+  padding: 5px 15px;
+  border: 1px solid #d9cec4;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #5c5f5b;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+
 .retirement-bubble {
   width: min(315px, 76vw);
   min-height: 101px;
@@ -633,6 +647,16 @@ a:focus-visible {
 @keyframes result-digit-roll {
   from { opacity: 0.35; transform: translateY(-22%); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+.cta-ad-note {
+  display: block;
+  margin: 0 0 11px;
+  color: #4c4f4b;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
 }
 
 .line-cta {
@@ -1213,6 +1237,7 @@ a:focus-visible {
 
     <section class="hero" aria-labelledby="page-title">
       <div class="hero-inner">
+        <p class="ad-label">アフィリエイト広告を含みます</p>
         <p class="retirement-bubble">退職時に</p>
         <h1 id="page-title">
           <span>国からもらえる給付金、</span>
@@ -1365,6 +1390,8 @@ a:focus-visible {
             </span>
             <span class="result-slot-unit" aria-hidden="true">円</span>
           </div>
+
+          <span class="cta-ad-note">※アフィリエイト広告を含みます</span>
 
           <a class="line-cta" id="line-cta" aria-disabled="true">
             <span class="line-mark" aria-hidden="true"><span>LINE</span></span>
