@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>辞めたあとのお金のこと｜なおのひとりごと</title>
+<meta name="description" content="退職したあとに受け取れる可能性がある制度について。相談できる窓口を紹介しています。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDEFEC;
+    --paper-lit:#F6F7F4;
+    --ink:#1E2321;
+    --ink-soft:#5C6360;
+    --rule:#CFD4CF;
+    --line:#06C755;
+    --line-dark:#05A948;
+    --measure:33rem;
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Zen Kaku Gothic New",system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.9;
+    letter-spacing:.02em;
+  }
+
+  .wrap{
+    max-width:var(--measure);
+    margin:0 auto;
+    padding:0 1.5rem;
+  }
+
+  .pr{
+    background:var(--paper-lit);
+    border-bottom:1px solid var(--rule);
+    font-size:.74rem;
+    color:var(--ink-soft);
+    letter-spacing:.04em;
+    padding:.55rem 0;
+    text-align:right;
+  }
+
+  /* ── hero ───────────────────────────── */
+  .hero{
+    position:relative;
+    padding:4.5rem 0 3.6rem;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      linear-gradient(180deg,var(--paper-lit) 0%,rgba(246,247,244,0) 78%),
+      repeating-linear-gradient(94deg,
+        rgba(255,255,255,.55) 0px,
+        rgba(255,255,255,.55) 34px,
+        rgba(255,255,255,0) 34px,
+        rgba(255,255,255,0) 92px);
+    pointer-events:none;
+  }
+  .hero .wrap{position:relative;}
+
+  .lede{
+    font-family:"Shippori Mincho",serif;
+    font-weight:500;
+    font-size:1.72rem;
+    line-height:1.75;
+    letter-spacing:.01em;
+    margin:0 0 1.5rem;
+  }
+  .lede span{display:block;}
+
+  .byline{
+    font-size:.82rem;
+    color:var(--ink-soft);
+    letter-spacing:.06em;
+    margin:0;
+  }
+
+  /* ── 本文 ───────────────────────────── */
+  section{padding:2.4rem 0;}
+
+  .quiet{
+    font-family:"Shippori Mincho",serif;
+    font-size:1.06rem;
+    line-height:2.1;
+  }
+  .quiet p{margin:0 0 1.15rem;}
+  .quiet p:last-child{margin-bottom:0;}
+
+  h2{
+    font-size:.92rem;
+    font-weight:700;
+    letter-spacing:.09em;
+    margin:0 0 1.1rem;
+    padding-top:1.4rem;
+    border-top:1px solid var(--rule);
+  }
+
+  p{margin:0 0 1.1rem;}
+  p:last-child{margin-bottom:0;}
+
+  ul.cond{
+    list-style:none;
+    margin:0 0 1.1rem;
+    padding:0;
+  }
+  ul.cond li{
+    position:relative;
+    padding-left:1.15rem;
+    margin-bottom:.5rem;
+  }
+  ul.cond li::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:.85em;
+    width:.42rem;
+    height:1px;
+    background:var(--ink-soft);
+  }
+
+  .caution{
+    background:var(--paper-lit);
+    border:1px solid var(--rule);
+    padding:1.25rem 1.35rem;
+    font-size:.92rem;
+    line-height:1.95;
+  }
+  .caution p{margin-bottom:.9rem;}
+  .caution p:last-child{margin-bottom:0;}
+
+  /* ── 流れ ───────────────────────────── */
+  ol.flow{
+    list-style:none;
+    margin:0;
+    padding:0;
+    counter-reset:step;
+  }
+  ol.flow li{
+    counter-increment:step;
+    position:relative;
+    padding:0 0 1.4rem 2.6rem;
+  }
+  ol.flow li::before{
+    content:counter(step);
+    position:absolute;
+    left:0;
+    top:.18rem;
+    width:1.65rem;
+    height:1.65rem;
+    border:1px solid var(--rule);
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    font-size:.78rem;
+    color:var(--ink-soft);
+    background:var(--paper-lit);
+  }
+  ol.flow li::after{
+    content:"";
+    position:absolute;
+    left:.82rem;
+    top:1.95rem;
+    bottom:.35rem;
+    width:1px;
+    background:var(--rule);
+  }
+  ol.flow li:last-child{padding-bottom:0;}
+  ol.flow li:last-child::after{display:none;}
+  ol.flow b{
+    display:block;
+    font-weight:500;
+    font-size:1rem;
+    margin-bottom:.15rem;
+  }
+  ol.flow small{
+    display:block;
+    font-size:.86rem;
+    line-height:1.9;
+    color:var(--ink-soft);
+  }
+
+  /* ── CTA ────────────────────────────── */
+  .cta{padding:1rem 0 2.4rem;}
+  .btn-sub{
+    display:block;
+    margin-top:.85rem;
+    background:transparent;
+    color:var(--ink);
+    border:1px solid var(--ink);
+    text-decoration:none;
+    text-align:center;
+    font-weight:500;
+    font-size:.95rem;
+    letter-spacing:.03em;
+    padding:.95rem 1rem;
+    border-radius:6px;
+    transition:background .18s ease,color .18s ease;
+  }
+  .btn-sub:hover,.btn-sub:focus-visible{background:var(--ink);color:var(--paper-lit);}
+  .btn-sub:focus-visible{outline:3px solid var(--ink);outline-offset:3px;}
+  .cta .lead{
+    font-size:.88rem;
+    color:var(--ink-soft);
+    margin:1.4rem 0 .6rem;
+  }
+  .btn{
+    display:block;
+    background:var(--line);
+    color:#fff;
+    text-decoration:none;
+    text-align:center;
+    font-weight:700;
+    font-size:1.06rem;
+    letter-spacing:.04em;
+    padding:1.15rem 1rem;
+    border-radius:6px;
+    transition:background .18s ease;
+  }
+  .btn:hover,.btn:focus-visible{background:var(--line-dark);}
+  .btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px;}
+
+  /* ── 注意書き ───────────────────────── */
+  .disclaimer{
+    border-top:1px solid var(--rule);
+    padding:1.6rem 0 0;
+    font-size:.78rem;
+    line-height:1.95;
+    color:var(--ink-soft);
+  }
+  .disclaimer p{margin:0 0 .55rem;}
+  .disclaimer p:last-child{margin-bottom:0;}
+
+  footer{
+    background:var(--ink);
+    color:#B9C0BC;
+    margin-top:2.4rem;
+    padding:2.2rem 0 2.4rem;
+    font-size:.8rem;
+    line-height:1.9;
+  }
+  .legal{
+    display:flex;
+    justify-content:center;
+    gap:2rem;
+    flex-wrap:wrap;
+    padding-bottom:1.4rem;
+    margin-bottom:1.4rem;
+    border-bottom:1px solid rgba(255,255,255,.16);
+  }
+  .legal a{
+    color:#F0F2EF;
+    text-decoration:underline;
+    text-underline-offset:.28em;
+    text-decoration-thickness:1px;
+  }
+  .legal a:hover,.legal a:focus-visible{color:#fff;}
+  .legal a:focus-visible{outline:2px solid #F0F2EF;outline-offset:4px;}
+  .colophon{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:1.2rem;
+    flex-wrap:wrap;
+  }
+  .colophon .who{color:#F0F2EF;}
+  .colophon .biz{font-size:.72rem;color:#8E9793;}
+
+  @media (prefers-reduced-motion:no-preference){
+    .lede,.byline{
+      opacity:0;
+      transform:translateY(10px);
+      animation:rise .85s cubic-bezier(.22,.61,.36,1) forwards;
+    }
+    .byline{animation-delay:.28s;}
+  }
+  @keyframes rise{to{opacity:1;transform:none;}}
+
+  @media (max-width:400px){
+    .lede{font-size:1.5rem;}
+  }
+</style>
+</head>
+<body>
+
+<div class="pr"><div class="wrap">アフィリエイト広告を含みます</div></div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="lede">
+      <span>辞めたあと、</span>
+      <span>いちばん不安だったのは</span>
+      <span>お金でした。</span>
+    </p>
+    <p class="byline">なおのひとりごと</p>
+  </div>
+</header>
+
+<main>
+
+  <section>
+    <div class="wrap quiet">
+      <p>体がしんどくて、それでも辞めたあとのことが怖くて、なかなか言い出せませんでした。貯金がどれくらい持つかを、何度も計算していました。</p>
+      <p>退職したあとに受け取れる可能性のある制度があることを、わたしは辞めてから知りました。</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>どんな制度か</h2>
+      <p>健康保険の傷病手当金と、雇用保険の失業手当です。どちらも公的な制度で、条件を満たせば対象になる可能性があります。</p>
+      <p>心身の不調で働くことが難しい状態のときに、傷病手当金の対象になる場合があります。ただし、その状態にあたるかどうかは医師の判断によります。</p>
+      <p>受け取れる金額や期間は、勤めていた期間や退職の理由などによって変わります。人によってまったく違います。</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>一般的な条件</h2>
+      <ul class="cond">
+        <li>退職する会社に1年以上勤めていて、社会保険に加入している</li>
+        <li>退職日とその前の数日を休むことができる</li>
+        <li>退職する前に医療機関を受診している、または受診できる</li>
+      </ul>
+      <p>個人事業主やフリーランスの方、勤続1年未満の方、国民健康保険にのみ加入している方は、対象になりにくいと言われています。</p>
+      <p>ただし、当てはまるかどうかを判断できるのは公的機関です。このページで対象かどうかをお伝えすることはできません。</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>手続きのこと</h2>
+      <p>制度そのものは、自分で申請することもできます。ただ、最初の申請だけでなく、受け取りが続くあいだ毎月の申請を続ける必要があります。</p>
+      <p>書類の書き方や進め方を相談できる窓口を紹介しています。申請を代わりに行うサービスではなく、進め方を一緒に確認していくものです。</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>相談してみるまでの流れ</h2>
+      <ol class="flow">
+        <li>
+          <b>LINEで友だち登録</b>
+          <small>まずは友だち登録から始まります。</small>
+        </li>
+        <li>
+          <b>いまの状況を伝える</b>
+          <small>退職の時期や勤続年数などをもとに、話を進めていきます。</small>
+        </li>
+        <li>
+          <b>オンラインで面談</b>
+          <small>対象になりそうかどうか、サポートの内容や費用は、ここで確認できます。</small>
+        </li>
+        <li>
+          <b>利用するかどうかを決める</b>
+          <small>話を聞いたうえで、やめることもできます。</small>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <a class="btn" href="https://s.lmes.jp/landing-qr/2005306410-aAxJvB6X?uLand=CX8YOa" target="_blank" rel="noopener">LINEで相談する</a>
+      <p class="lead">その前に、目安だけ知っておきたい方へ。</p>
+      <a class="btn-sub" href="https://ponchiinu44-del.github.io/taishoku-kyufukin/" target="_blank" rel="noopener">受給額の目安を約30秒でチェック</a>
+    </div>
+  </section>
+
+  <section class="disclaimer">
+    <div class="wrap">
+      <p>本ページはアフィリエイト広告を含みます。</p>
+      <p>記載している条件や金額は一般的な目安であり、実際に受け取れるかどうか、いくらになるかは個別の状況によって変わります。</p>
+      <p>受給の可否を最終的に判断するのは、健康保険組合やハローワークなどの公的機関です。当ページおよび紹介先は公的機関ではありません。</p>
+      <p>傷病手当金は、心身の不調により働くことが難しい状態にある方が対象です。受診や診断については、必ず医師の判断を仰いでください。</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <nav class="legal">
+      <a href="https://ponchiinu44-del.github.io/taishoku-kyufukin/tokushoho.html" target="_blank" rel="noopener">特定商取引法に基づく表記</a>
+      <a href="https://ponchiinu44-del.github.io/taishoku-kyufukin/privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>
+    </nav>
+    <div class="colophon">
+      <span class="who">なおのひとりごと</span>
+      <span class="biz">紹介先：合同会社HUG（退職給付金サポート「アンタイ」）</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
