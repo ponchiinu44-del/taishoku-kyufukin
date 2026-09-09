@@ -98,6 +98,7 @@
   .simbox .top{display:flex;align-items:center;gap:.9rem;margin-bottom:.8rem;}
   .simbox .icon{flex:none;width:2.4rem;height:2.4rem;}
   .simbox p{font-size:.92rem;margin:0;}
+  .simbox .simnote{font-size:.78rem;color:var(--ink-soft);margin-top:.75rem;line-height:1.85;}
   .btn-sub{
     display:block;background:transparent;color:var(--ink);border:1px solid var(--ink);
     text-decoration:none;text-align:center;font-weight:500;font-size:.98rem;
@@ -130,14 +131,6 @@
   }
   .btn:hover,.btn:focus-visible{background:var(--line-dark);}
   .btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px;}
-
-  .whobox{
-    background:var(--paper-lit);border:1px solid var(--rule);
-    padding:1.15rem 1.25rem;font-size:.88rem;line-height:1.95;margin-top:1rem;
-  }
-  .whobox dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:.15rem .9rem;}
-  .whobox dt{color:var(--ink-soft);white-space:nowrap;}
-  .whobox dd{margin:0;}
 
   .disclaimer{
     border-top:1px solid var(--rule);padding:1.6rem 0 0;
@@ -218,11 +211,11 @@
         </div>
         <p><b>傷病手当金</b>の対象になる場合があります。退職後も引き続き受け取るには、次のような条件があります。</p>
         <ul>
-          <li>退職日までに、健康保険の被保険者期間が継続して1年以上あること</li>
-          <li>退職日の前日の時点で、傷病手当金を受けているか、受けられる状態にあること</li>
+          <li>退職日までに、会社の健康保険に本人として1年以上続けて加入していたこと（国民健康保険・任意継続・共済組合の期間は含みません）</li>
+          <li><b>退職日</b>の時点で、傷病手当金を受けているか、受けられる状態にあること</li>
         </ul>
-        <p>勤続年数ではなく、<b>健康保険に入っていた期間</b>で判断されます。転職していても、間が空かずに続いていれば通算されます。</p>
-        <p>働けない状態かどうかは、<b>医師の意見など</b>をもとに判断されます。</p>
+        <p>勤続年数ではなく、<b>健康保険に加入していた期間</b>で判断されます。転職していても、間が空かずに続いていれば通算されます。</p>
+        <p>退職日に出勤すると、対象外になることがあります。働けない状態かどうかは、<b>医師の意見など</b>をもとに判断されます。</p>
       </div>
 
       <div class="route">
@@ -262,6 +255,7 @@
           <p>4つの質問に答えるだけで、退職後に確認できる公的給付の目安がわかります。</p>
         </div>
         <a class="btn-sub" href="https://ponchiinu44-del.github.io/taishoku-kyufukin/" target="_blank" rel="noopener">受給額の目安を約30秒でチェック</a>
+        <p class="simnote">結果は目安です。受給できるかどうかを判定するものではありません。</p>
       </div>
     </div>
   </section>
@@ -305,14 +299,6 @@
       </ol>
 
       <a class="btn" href="https://s.lmes.jp/landing-qr/2005306410-aAxJvB6X?uLand=CX8YOa" target="_blank" rel="noopener">LINEでサポート内容を相談する</a>
-
-      <div class="whobox">
-        <dl>
-          <dt>相談先</dt><dd>合同会社HUG</dd>
-          <dt>サービス名</dt><dd>退職給付金サポート「アンタイ」</dd>
-          <dt>費用</dt><dd>面談で案内されます。金額と支払い時期は、申し込む前に書面で示されます</dd>
-        </dl>
-      </div>
     </div>
   </section>
 
