@@ -4,292 +4,173 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>辞めたあとのお金のこと｜なおのひとりごと</title>
-<meta name="description" content="退職したあとに受け取れる可能性がある制度について。相談できる窓口を紹介しています。">
+<meta name="description" content="退職の前後に確認できる公的制度と、申請の進め方を相談できる窓口について。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#EDEFEC;
-    --paper-lit:#F6F7F4;
-    --ink:#1E2321;
-    --ink-soft:#5C6360;
-    --rule:#CFD4CF;
+    --paper:#F2F1EC;
+    --paper-lit:#FAF9F5;
+    --ink:#232724;
+    --ink-soft:#61665F;
+    --rule:#D8D6CE;
+    --accent:#C2894B;
+    --accent-soft:#E7C9A4;
     --line:#06C755;
     --line-dark:#05A948;
     --measure:33rem;
   }
-
   *{box-sizing:border-box;}
   html{-webkit-text-size-adjust:100%;}
-
   body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
+    margin:0;background:var(--paper);color:var(--ink);
     font-family:"Zen Kaku Gothic New",system-ui,sans-serif;
-    font-size:16px;
-    line-height:1.9;
-    letter-spacing:.02em;
+    font-size:16px;line-height:1.9;letter-spacing:.02em;
   }
-
-  .wrap{
-    max-width:var(--measure);
-    margin:0 auto;
-    padding:0 1.5rem;
-  }
+  .wrap{max-width:var(--measure);margin:0 auto;padding:0 1.5rem;}
 
   .pr{
-    background:var(--paper-lit);
-    border-bottom:1px solid var(--rule);
-    font-size:.74rem;
-    color:var(--ink-soft);
-    letter-spacing:.04em;
-    padding:.55rem 0;
-    text-align:right;
+    background:var(--paper-lit);border-bottom:1px solid var(--rule);
+    font-size:.74rem;color:var(--ink-soft);letter-spacing:.04em;
+    padding:.55rem 0;text-align:right;
   }
 
   /* ── hero ───────────────────────────── */
   .hero{
     position:relative;
-    padding:4.5rem 0 3.6rem;
-    overflow:hidden;
-  }
-  .hero::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-      linear-gradient(180deg,var(--paper-lit) 0%,rgba(246,247,244,0) 78%),
-      repeating-linear-gradient(94deg,
-        rgba(255,255,255,.55) 0px,
-        rgba(255,255,255,.55) 34px,
-        rgba(255,255,255,0) 34px,
-        rgba(255,255,255,0) 92px);
-    pointer-events:none;
+    padding:1.6rem 0 3rem;
+    background:linear-gradient(180deg,#FEFEFA 0%,#FEFEFA 46%,var(--paper) 100%);
   }
   .hero .wrap{position:relative;}
-
+  .illust-hero{
+    display:block;width:calc(100% + 3rem);max-width:none;height:auto;
+    margin:-.4rem -1.5rem 1.2rem;mix-blend-mode:multiply;
+  }
+  .byline{font-size:.8rem;color:var(--ink-soft);letter-spacing:.06em;margin:0 0 .9rem;}
   .lede{
-    font-family:"Shippori Mincho",serif;
-    font-weight:500;
-    font-size:1.72rem;
-    line-height:1.75;
-    letter-spacing:.01em;
-    margin:0 0 1.5rem;
+    font-family:"Shippori Mincho",serif;font-weight:500;
+    font-size:1.6rem;line-height:1.8;letter-spacing:.01em;margin:0 0 1.4rem;
   }
   .lede span{display:block;}
+  .hero .quiet{font-family:"Shippori Mincho",serif;font-size:1.02rem;line-height:2.05;margin:0;}
 
-  .byline{
-    font-size:.82rem;
-    color:var(--ink-soft);
-    letter-spacing:.06em;
-    margin:0;
-  }
-
-  /* ── 本文 ───────────────────────────── */
-  section{padding:2.4rem 0;}
-
-  .quiet{
-    font-family:"Shippori Mincho",serif;
-    font-size:1.06rem;
-    line-height:2.1;
-  }
-  .quiet p{margin:0 0 1.15rem;}
-  .quiet p:last-child{margin-bottom:0;}
-
+  section{padding:2.3rem 0;}
   h2{
-    font-size:.92rem;
-    font-weight:700;
-    letter-spacing:.09em;
-    margin:0 0 1.1rem;
-    padding-top:1.4rem;
-    border-top:1px solid var(--rule);
+    font-size:.92rem;font-weight:700;letter-spacing:.09em;
+    margin:0 0 1.1rem;padding-top:1.4rem;border-top:1px solid var(--rule);
   }
-
-  p{margin:0 0 1.1rem;}
+  h2.plainhead{border:none;padding-top:.4rem;}
+  p{margin:0 0 1.05rem;}
   p:last-child{margin-bottom:0;}
+  b{font-weight:700;}
 
-  ul.cond{
-    list-style:none;
-    margin:0 0 1.1rem;
-    padding:0;
+  /* ── 2制度 ──────────────────────────── */
+  .route{
+    background:var(--paper-lit);border:1px solid var(--rule);
+    padding:1.25rem 1.3rem;margin-bottom:1rem;
   }
-  ul.cond li{
-    position:relative;
-    padding-left:1.15rem;
-    margin-bottom:.5rem;
+  .route .head{display:flex;align-items:flex-start;gap:.9rem;margin-bottom:.7rem;}
+  .route .icon{flex:none;width:2.7rem;height:2.7rem;margin-top:.15rem;}
+  .route .name{
+    display:inline-block;font-size:.74rem;letter-spacing:.06em;
+    color:var(--ink-soft);border:1px solid var(--rule);
+    background:var(--paper);padding:.08rem .5rem;margin-bottom:.35rem;
   }
-  ul.cond li::before{
-    content:"";
-    position:absolute;
-    left:0;
-    top:.85em;
-    width:.42rem;
-    height:1px;
-    background:var(--ink-soft);
-  }
+  .route h3{font-size:.98rem;font-weight:700;margin:0;line-height:1.65;}
+  .route p{font-size:.92rem;line-height:1.95;margin:0 0 .7rem;}
+  .route p:last-child{margin-bottom:0;}
+  .route ul{margin:.2rem 0 .7rem;padding:0;list-style:none;}
+  .route li{position:relative;padding-left:1.1rem;margin-bottom:.35rem;font-size:.9rem;line-height:1.85;}
+  .route li::before{content:"";position:absolute;left:0;top:.9em;width:.42rem;height:1px;background:var(--accent);}
 
-  .caution{
-    background:var(--paper-lit);
-    border:1px solid var(--rule);
-    padding:1.25rem 1.35rem;
-    font-size:.92rem;
-    line-height:1.95;
-  }
-  .caution p{margin-bottom:.9rem;}
-  .caution p:last-child{margin-bottom:0;}
-
-  /* ── 流れ ───────────────────────────── */
-  ol.flow{
-    list-style:none;
-    margin:0;
-    padding:0;
-    counter-reset:step;
-  }
-  ol.flow li{
-    counter-increment:step;
-    position:relative;
-    padding:0 0 1.4rem 2.6rem;
-  }
-  ol.flow li::before{
-    content:counter(step);
-    position:absolute;
-    left:0;
-    top:.18rem;
-    width:1.65rem;
-    height:1.65rem;
-    border:1px solid var(--rule);
-    border-radius:50%;
-    display:grid;
-    place-items:center;
-    font-size:.78rem;
-    color:var(--ink-soft);
-    background:var(--paper-lit);
-  }
-  ol.flow li::after{
-    content:"";
-    position:absolute;
-    left:.82rem;
-    top:1.95rem;
-    bottom:.35rem;
-    width:1px;
-    background:var(--rule);
-  }
-  ol.flow li:last-child{padding-bottom:0;}
-  ol.flow li:last-child::after{display:none;}
-  ol.flow b{
-    display:block;
-    font-weight:500;
-    font-size:1rem;
-    margin-bottom:.15rem;
-  }
-  ol.flow small{
-    display:block;
-    font-size:.86rem;
-    line-height:1.9;
-    color:var(--ink-soft);
+  .aside{
+    font-size:.88rem;line-height:1.95;color:var(--ink-soft);
+    border-left:2px solid var(--accent-soft);padding-left:1rem;margin:1.2rem 0 0;
   }
 
-  /* ── CTA ────────────────────────────── */
-  .cta{padding:1rem 0 2.4rem;}
+  ul.plain{margin:.2rem 0 1.05rem;padding:0;list-style:none;}
+  ul.plain li{position:relative;padding-left:1.15rem;margin-bottom:.4rem;font-size:.94rem;}
+  ul.plain li::before{content:"";position:absolute;left:0;top:.9em;width:.42rem;height:1px;background:var(--accent);}
+
+  /* ── シミュレーター ─────────────────── */
+  .simbox{border:1px solid var(--accent);background:var(--paper-lit);padding:1.3rem;}
+  .simbox .top{display:flex;align-items:center;gap:.9rem;margin-bottom:.8rem;}
+  .simbox .icon{flex:none;width:2.4rem;height:2.4rem;}
+  .simbox p{font-size:.92rem;margin:0;}
   .btn-sub{
-    display:block;
-    margin-top:.85rem;
-    background:transparent;
-    color:var(--ink);
-    border:1px solid var(--ink);
-    text-decoration:none;
-    text-align:center;
-    font-weight:500;
-    font-size:.95rem;
-    letter-spacing:.03em;
-    padding:.95rem 1rem;
-    border-radius:6px;
+    display:block;background:transparent;color:var(--ink);border:1px solid var(--ink);
+    text-decoration:none;text-align:center;font-weight:500;font-size:.98rem;
+    letter-spacing:.03em;padding:.95rem 1rem;border-radius:6px;
     transition:background .18s ease,color .18s ease;
   }
   .btn-sub:hover,.btn-sub:focus-visible{background:var(--ink);color:var(--paper-lit);}
   .btn-sub:focus-visible{outline:3px solid var(--ink);outline-offset:3px;}
-  .cta .lead{
-    font-size:.88rem;
-    color:var(--ink-soft);
-    margin:1.4rem 0 .6rem;
+
+  /* ── 流れ ───────────────────────────── */
+  ol.flow{list-style:none;margin:0 0 1.6rem;padding:0;counter-reset:step;}
+  ol.flow li{counter-increment:step;position:relative;padding:0 0 1.35rem 2.6rem;}
+  ol.flow li::before{
+    content:counter(step);position:absolute;left:0;top:.18rem;
+    width:1.65rem;height:1.65rem;border:1px solid var(--accent);border-radius:50%;
+    display:grid;place-items:center;font-size:.78rem;color:var(--accent);background:var(--paper-lit);
   }
+  ol.flow li::after{content:"";position:absolute;left:.82rem;top:1.95rem;bottom:.3rem;width:1px;background:var(--rule);}
+  ol.flow li:last-child{padding-bottom:0;}
+  ol.flow li:last-child::after{display:none;}
+  ol.flow strong{display:block;font-weight:500;font-size:1rem;margin-bottom:.15rem;}
+  ol.flow small{display:block;font-size:.86rem;line-height:1.9;color:var(--ink-soft);}
+
+  /* ── CTA ────────────────────────────── */
+  .cta{padding:1rem 0 1.4rem;}
   .btn{
-    display:block;
-    background:var(--line);
-    color:#fff;
-    text-decoration:none;
-    text-align:center;
-    font-weight:700;
-    font-size:1.06rem;
-    letter-spacing:.04em;
-    padding:1.15rem 1rem;
-    border-radius:6px;
-    transition:background .18s ease;
+    display:block;background:var(--line);color:#fff;text-decoration:none;
+    text-align:center;font-weight:700;font-size:1.06rem;letter-spacing:.04em;
+    padding:1.15rem 1rem;border-radius:6px;transition:background .18s ease;
   }
   .btn:hover,.btn:focus-visible{background:var(--line-dark);}
   .btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px;}
 
-  /* ── 注意書き ───────────────────────── */
+  .whobox{
+    background:var(--paper-lit);border:1px solid var(--rule);
+    padding:1.15rem 1.25rem;font-size:.88rem;line-height:1.95;margin-top:1rem;
+  }
+  .whobox dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:.15rem .9rem;}
+  .whobox dt{color:var(--ink-soft);white-space:nowrap;}
+  .whobox dd{margin:0;}
+
   .disclaimer{
-    border-top:1px solid var(--rule);
-    padding:1.6rem 0 0;
-    font-size:.78rem;
-    line-height:1.95;
-    color:var(--ink-soft);
+    border-top:1px solid var(--rule);padding:1.6rem 0 0;
+    font-size:.78rem;line-height:1.95;color:var(--ink-soft);
   }
   .disclaimer p{margin:0 0 .55rem;}
   .disclaimer p:last-child{margin-bottom:0;}
 
   footer{
-    background:var(--ink);
-    color:#B9C0BC;
-    margin-top:2.4rem;
-    padding:2.2rem 0 2.4rem;
-    font-size:.8rem;
-    line-height:1.9;
+    background:var(--ink);color:#BEC2BA;margin-top:2.4rem;
+    padding:2.2rem 0 2.4rem;font-size:.8rem;line-height:1.9;
   }
   .legal{
-    display:flex;
-    justify-content:center;
-    gap:2rem;
-    flex-wrap:wrap;
-    padding-bottom:1.4rem;
-    margin-bottom:1.4rem;
-    border-bottom:1px solid rgba(255,255,255,.16);
+    display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;
+    padding-bottom:1.4rem;margin-bottom:1.4rem;border-bottom:1px solid rgba(255,255,255,.16);
   }
-  .legal a{
-    color:#F0F2EF;
-    text-decoration:underline;
-    text-underline-offset:.28em;
-    text-decoration-thickness:1px;
-  }
-  .legal a:hover,.legal a:focus-visible{color:#fff;}
-  .legal a:focus-visible{outline:2px solid #F0F2EF;outline-offset:4px;}
-  .colophon{
-    display:flex;
-    justify-content:space-between;
-    align-items:baseline;
-    gap:1.2rem;
-    flex-wrap:wrap;
-  }
-  .colophon .who{color:#F0F2EF;}
-  .colophon .biz{font-size:.72rem;color:#8E9793;}
+  .legal a{color:#F3F2EC;text-decoration:underline;text-underline-offset:.28em;}
+  .legal a:focus-visible{outline:2px solid #F3F2EC;outline-offset:4px;}
+  .colophon{display:flex;justify-content:space-between;align-items:baseline;gap:1.2rem;flex-wrap:wrap;}
+  .colophon .who{color:#F3F2EC;}
+  .colophon .biz{font-size:.72rem;color:#91968D;}
 
   @media (prefers-reduced-motion:no-preference){
-    .lede,.byline{
-      opacity:0;
-      transform:translateY(10px);
-      animation:rise .85s cubic-bezier(.22,.61,.36,1) forwards;
+    .illust-hero,.byline,.lede,.hero .quiet{
+      opacity:0;transform:translateY(10px);
+      animation:rise .9s cubic-bezier(.22,.61,.36,1) forwards;
     }
-    .byline{animation-delay:.28s;}
+    .byline{animation-delay:.12s;}
+    .lede{animation-delay:.22s;}
+    .hero .quiet{animation-delay:.4s;}
   }
   @keyframes rise{to{opacity:1;transform:none;}}
-
-  @media (max-width:400px){
-    .lede{font-size:1.5rem;}
-  }
+  @media (max-width:400px){.lede{font-size:1.42rem;}}
 </style>
 </head>
 <body>
@@ -298,92 +179,148 @@
 
 <header class="hero">
   <div class="wrap">
-    <p class="lede">
-      <span>辞めたあと、</span>
-      <span>いちばん不安だったのは</span>
-      <span>お金でした。</span>
-    </p>
+
+    <img class="illust-hero" src="hero.png" width="1200" height="552" alt="" decoding="async">
+
     <p class="byline">なおのひとりごと</p>
+    <p class="lede">
+      <span>辞めたい。</span>
+      <span>でも、辞めたあとのお金が不安。</span>
+    </p>
+    <p class="quiet">体がしんどくても、生活費のことを考えると、なかなか言い出せませんでした。わたしも、貯金がどれくらい持つかを何度も計算していました。</p>
   </div>
 </header>
 
 <main>
 
   <section>
-    <div class="wrap quiet">
-      <p>体がしんどくて、それでも辞めたあとのことが怖くて、なかなか言い出せませんでした。貯金がどれくらい持つかを、何度も計算していました。</p>
-      <p>退職したあとに受け取れる可能性のある制度があることを、わたしは辞めてから知りました。</p>
+    <div class="wrap">
+      <p>退職の前後に、確認できる公的な制度があります。このページでは、その制度の違いと、申請の進め方を相談できる民間のサポートを紹介しています。</p>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <h2>どんな制度か</h2>
-      <p>健康保険の傷病手当金と、雇用保険の失業手当です。どちらも公的な制度で、条件を満たせば対象になる可能性があります。</p>
-      <p>心身の不調で働くことが難しい状態のときに、傷病手当金の対象になる場合があります。ただし、その状態にあたるかどうかは医師の判断によります。</p>
-      <p>受け取れる金額や期間は、勤めていた期間や退職の理由などによって変わります。人によってまったく違います。</p>
+      <h2>まず、2つの制度を分けて考える</h2>
+
+      <div class="route">
+        <div class="head">
+          <!-- 湯気の立つカップ -->
+          <svg class="icon" viewBox="0 0 44 44" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 22 h22 v9 a7 7 0 0 1 -7 7 h-8 a7 7 0 0 1 -7 -7 z" stroke="var(--accent)" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M31 25 h3 a5 5 0 0 1 0 10 h-1" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M16 16 c0 -4 4 -4 4 -8 M24 16 c0 -4 4 -4 4 -8" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <span class="name">健康保険</span>
+            <h3>病気やけがで働くことが難しい方へ</h3>
+          </div>
+        </div>
+        <p><b>傷病手当金</b>の対象になる場合があります。退職後も引き続き受け取るには、次のような条件があります。</p>
+        <ul>
+          <li>退職日までに、健康保険の被保険者期間が継続して1年以上あること</li>
+          <li>退職日の前日の時点で、傷病手当金を受けているか、受けられる状態にあること</li>
+        </ul>
+        <p>勤続年数ではなく、<b>健康保険に入っていた期間</b>で判断されます。転職していても、間が空かずに続いていれば通算されます。</p>
+        <p>働けない状態かどうかは、<b>医師の意見など</b>をもとに判断されます。</p>
+      </div>
+
+      <div class="route">
+        <div class="head">
+          <!-- 少し開いた扉と、差す光 -->
+          <svg class="icon" viewBox="0 0 44 44" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17 37 V9 h16 v28" stroke="var(--accent)" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M17 37 L7 33 V13 L17 9" stroke="var(--accent)" stroke-width="1.6" stroke-linejoin="round"/>
+            <circle cx="13" cy="24" r="1.5" fill="var(--accent)"/>
+            <path d="M33 37 h5 M33 30 h8" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" opacity=".55"/>
+          </svg>
+          <div>
+            <span class="name">雇用保険</span>
+            <h3>働ける状態で、次の仕事を探す方へ</h3>
+          </div>
+        </div>
+        <p><b>基本手当（いわゆる失業手当）</b>の対象になる場合があります。加入期間や退職理由によって、受け取れる日数が変わります。</p>
+        <p>この制度は、<b>働く意思と能力があり、求職活動をしている方</b>が対象です。療養中で働けない期間は、原則として受け取れません。</p>
+      </div>
+
+      <p class="aside">病気やけがですぐに働けない場合は、基本手当の<b>受給期間を延長する手続き</b>があります。働けない状態が30日以上続いたときに申請できます。詳しくはハローワークで確認してください。</p>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <h2>一般的な条件</h2>
-      <ul class="cond">
-        <li>退職する会社に1年以上勤めていて、社会保険に加入している</li>
-        <li>退職日とその前の数日を休むことができる</li>
-        <li>退職する前に医療機関を受診している、または受診できる</li>
+      <h2>受け取れる金額の目安</h2>
+      <div class="simbox">
+        <div class="top">
+          <!-- チェックリスト -->
+          <svg class="icon" viewBox="0 0 40 40" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="5" width="24" height="30" rx="3" stroke="var(--accent)" stroke-width="1.6"/>
+            <path d="M13 14 l3 3 l6 -6" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M13 25 l3 3 l6 -6" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/>
+            <path d="M25 15 h3 M25 26 h3" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" opacity=".5"/>
+          </svg>
+          <p>4つの質問に答えるだけで、退職後に確認できる公的給付の目安がわかります。</p>
+        </div>
+        <a class="btn-sub" href="https://ponchiinu44-del.github.io/taishoku-kyufukin/" target="_blank" rel="noopener">受給額の目安を約30秒でチェック</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>申請は、自分でもできます</h2>
+      <p>どちらの制度も、加入している健康保険やハローワークで手続きできます。制度についての相談も、それぞれの窓口で受けられます。</p>
+      <p>ただ、傷病手当金は最初の申請だけでなく、受け取りが続くあいだ<b>申請を繰り返す必要があります</b>。書類の準備や期限の管理を、体調が悪いなかで続けることになります。</p>
+      <p>そこを相談できる民間のサポートを紹介しています。おもに次のようなことを相談できます。</p>
+      <ul class="plain">
+        <li>申請に必要な書類と、準備する順番</li>
+        <li>書類の書き方についての相談</li>
+        <li>継続して申請するときのスケジュール確認</li>
+        <li>手続き中に分からなくなったときの質問</li>
       </ul>
-      <p>個人事業主やフリーランスの方、勤続1年未満の方、国民健康保険にのみ加入している方は、対象になりにくいと言われています。</p>
-      <p>ただし、当てはまるかどうかを判断できるのは公的機関です。このページで対象かどうかをお伝えすることはできません。</p>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <h2>手続きのこと</h2>
-      <p>制度そのものは、自分で申請することもできます。ただ、最初の申請だけでなく、受け取りが続くあいだ毎月の申請を続ける必要があります。</p>
-      <p>書類の書き方や進め方を相談できる窓口を紹介しています。申請を代わりに行うサービスではなく、進め方を一緒に確認していくものです。</p>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <h2>相談してみるまでの流れ</h2>
-      <ol class="flow">
-        <li>
-          <b>LINEで友だち登録</b>
-          <small>まずは友だち登録から始まります。</small>
-        </li>
-        <li>
-          <b>いまの状況を伝える</b>
-          <small>退職の時期や勤続年数などをもとに、話を進めていきます。</small>
-        </li>
-        <li>
-          <b>オンラインで面談</b>
-          <small>対象になりそうかどうか、サポートの内容や費用は、ここで確認できます。</small>
-        </li>
-        <li>
-          <b>利用するかどうかを決める</b>
-          <small>話を聞いたうえで、やめることもできます。</small>
-        </li>
-      </ol>
+      <p>申請を代わりに行うサービスではありません。手続きはご本人が行います。<b>必要かどうかは、内容と費用を確認したうえで判断してください。</b></p>
     </div>
   </section>
 
   <section class="cta">
     <div class="wrap">
-      <a class="btn" href="https://s.lmes.jp/landing-qr/2005306410-aAxJvB6X?uLand=CX8YOa" target="_blank" rel="noopener">LINEで相談する</a>
-      <p class="lead">その前に、目安だけ知っておきたい方へ。</p>
-      <a class="btn-sub" href="https://ponchiinu44-del.github.io/taishoku-kyufukin/" target="_blank" rel="noopener">受給額の目安を約30秒でチェック</a>
+      <h2>相談から申し込みまで</h2>
+      <ol class="flow">
+        <li>
+          <strong>LINEで友だち登録</strong>
+          <small>下のボタンから、紹介先のLINEに移動します。</small>
+        </li>
+        <li>
+          <strong>いまの状況を伝える</strong>
+          <small>退職の時期や勤続年数など、確認に必要なことを伝えます。</small>
+        </li>
+        <li>
+          <strong>オンラインで面談</strong>
+          <small>対象になりそうかどうか、サポートの内容と費用を、ここで確認できます。</small>
+        </li>
+        <li>
+          <strong>申し込むかどうかを決める</strong>
+          <small>話を聞いたうえで、見送ることもできます。</small>
+        </li>
+      </ol>
+
+      <a class="btn" href="https://s.lmes.jp/landing-qr/2005306410-aAxJvB6X?uLand=CX8YOa" target="_blank" rel="noopener">LINEでサポート内容を相談する</a>
+
+      <div class="whobox">
+        <dl>
+          <dt>相談先</dt><dd>合同会社HUG</dd>
+          <dt>サービス名</dt><dd>退職給付金サポート「アンタイ」</dd>
+          <dt>費用</dt><dd>面談で案内されます。金額と支払い時期は、申し込む前に書面で示されます</dd>
+        </dl>
+      </div>
     </div>
   </section>
 
   <section class="disclaimer">
     <div class="wrap">
-      <p>本ページはアフィリエイト広告を含みます。</p>
-      <p>記載している条件や金額は一般的な目安であり、実際に受け取れるかどうか、いくらになるかは個別の状況によって変わります。</p>
-      <p>受給の可否を最終的に判断するのは、健康保険組合やハローワークなどの公的機関です。当ページおよび紹介先は公的機関ではありません。</p>
-      <p>傷病手当金は、心身の不調により働くことが難しい状態にある方が対象です。受診や診断については、必ず医師の判断を仰いでください。</p>
+      <p>本ページはアフィリエイト広告を含みます。当ページおよび紹介先は公的機関ではありません。</p>
+      <p>記載している条件は一般的な目安です。実際に受け取れるかどうか、いくらになるかは個別の状況によって変わり、受給の可否は協会けんぽ・健康保険組合やハローワークなどの公的機関が判断します。</p>
+      <p>制度の詳細は、加入している健康保険およびハローワークでご確認ください。</p>
     </div>
   </section>
 
@@ -392,8 +329,8 @@
 <footer>
   <div class="wrap">
     <nav class="legal">
-      <a href="https://ponchiinu44-del.github.io/taishoku-kyufukin/tokushoho.html" target="_blank" rel="noopener">特定商取引法に基づく表記</a>
-      <a href="https://ponchiinu44-del.github.io/taishoku-kyufukin/privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>
+      <a href="tokushoho.html">特定商取引法に基づく表記</a>
+      <a href="privacy.html">プライバシーポリシー</a>
     </nav>
     <div class="colophon">
       <span class="who">なおのひとりごと</span>
