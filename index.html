@@ -1229,6 +1229,23 @@ a:focus-visible {
 }
 
   .line-cta[aria-disabled="true"] { cursor: default; }
+
+/* 回答前・回答途中でも使えるLINE登録導線 */
+.direct-line {
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+.direct-line h3 {
+  margin: 0 0 22px;
+  font-size: clamp(18px, 4.5vw, 23px);
+  line-height: 1.6;
+}
+.direct-line h3 span { display: block; }
+.direct-line h3 mark { background: #fff600; color: inherit; padding: 0 0.12em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.direct-line .line-cta { min-height: 88px; animation: none; }
+.direct-line .line-cta-main { font-size: clamp(20px, 5.5vw, 30px); }
   </style>
 </head>
 <body>
@@ -1276,6 +1293,14 @@ a:focus-visible {
         </header>
         <div class="progress-track" aria-hidden="true"><span id="progress-bar" style="width:25%"></span></div>
         <div id="simulator-body"></div>
+        <section class="direct-line" aria-labelledby="direct-line-title">
+          <h3 id="direct-line-title"><span><mark>無料相談希望</mark>の方</span><span><mark>無料プレゼント</mark>を受け取りたい方</span></h3>
+          <a class="line-cta" id="direct-line-cta" aria-disabled="true">
+            <span class="line-mark" aria-hidden="true"><span>LINE</span></span>
+            <strong class="line-cta-main">こちらから</strong>
+            <span class="line-cta-arrow" aria-hidden="true">→</span>
+          </a>
+        </section>
       </div>
     </section>
 
@@ -1296,8 +1321,17 @@ a:focus-visible {
      * ★ LINEリンクの設定箇所
      * 下の "" の中に、使用するLINEのURLを貼り付けてください。
      * 例: const LINE_URL = "https://line.me/...";
+     * 質問下の登録ボタンと診断結果の登録ボタンに共通で使います。
      */
     const LINE_URL = "https://s.lmes.jp/landing-qr/2005306410-aAxJvB6X?uLand=CX8YOa";
+
+    const directLineCta = document.getElementById("direct-line-cta");
+    if (LINE_URL.trim()) {
+      directLineCta.href = LINE_URL.trim();
+      directLineCta.target = "_blank";
+      directLineCta.rel = "noopener noreferrer";
+      directLineCta.removeAttribute("aria-disabled");
+    }
 
     const questions = [
       { label: "年齢", title: "年齢を教えてください", options: ["29歳以下", "30代", "40代", "50歳以上"] },
